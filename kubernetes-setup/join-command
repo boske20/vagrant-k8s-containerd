@@ -1,0 +1,1 @@
+kubeadm join 192.168.50.10:6443 --token i77pnf.ndrmkons7hv9x9qk --discovery-token-ca-cert-hash sha256:8e06dce7f440f29081777d88bedb3cdfe249a7a35b07968a0c7fcc7cae449255 
