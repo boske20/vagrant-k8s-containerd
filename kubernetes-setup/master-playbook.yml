@@ -6,6 +6,12 @@
       url: https://download.docker.com/linux/centos/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
       mode: 0644
+      
+  - name: CNI to be used
+    get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+      mode: 0644
 
   - name: Add kubernetes repo
     yum_repository:
@@ -156,9 +162,9 @@
      - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
      - chown vagrant:vagrant /home/vagrant/.kube/config
 
-  - name: Install weavenet pod network
+  - name: Install calico pod network
     become: false
-    command: kubectl apply -f "https://cloud.weave.works/k8s/v1.22/net"
+    command: kubectl create -f https://docs.projectcalico.org/manifests/calico.yaml
 
   - name: Generate join command
     command: kubeadm token create --print-join-command
