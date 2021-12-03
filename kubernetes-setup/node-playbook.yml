@@ -151,6 +151,8 @@
 
   - name: Join the node to cluster
     command: sh /tmp/join-command.sh
+    become: true
+
   handlers:
     - name: run sysctl
       command:
